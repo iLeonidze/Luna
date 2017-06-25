@@ -1,0 +1,49 @@
+{
+  "version":{
+    "compatible":10000
+  },
+  "site":{
+    "host":"luna.com",
+    "name":"Luna demo site",
+    "description":"Simple & powerful CMS",
+    "delimiter":" / "
+  },
+  "template":{
+    "header":"header.php",
+    "footer":"footer.php",
+    "admin":"admin.php"
+  },
+  "log":{
+    "enabled":true,
+    "level":0,
+    "size":10240,
+    "location":"storage/log.txt",
+    "statistics":true
+  },
+  "index":[
+    {
+      "urls":[
+        "admin"
+      ],
+      "id":1,
+      "hidden":true
+    },
+    {
+      "urls":[
+        "hello/demo"
+      ],
+      "id":14983915899440,
+      "hidden":false
+    },
+    {
+      "urls":[
+        "выезд"
+      ],
+      "id":1234567890,
+      "redirect":"ремонт/техническое_обслуживание/выезд"
+    }
+  ],
+  "navigation":[
+
+  ]
+}

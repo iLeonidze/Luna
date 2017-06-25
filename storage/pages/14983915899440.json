@@ -1,0 +1,23 @@
+{
+  "version":10000,
+  "created":123,
+  "modified":123,
+  "revisions":0,
+  "main":{
+    "title":"Demo page",
+    "breadcrumb":"First demo page"
+  },
+  "content":"<h1>Hello world!</h1>",
+  "seo":{
+    "description":"",
+    "keywords":[
+
+    ],
+    "og":{
+      "title":"",
+      "images":[
+
+      ]
+    }
+  }
+}
