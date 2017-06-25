@@ -3,15 +3,32 @@
     "compatible":10000
   },
   "site":{
+    "https_supported":true,
     "host":"luna.com",
     "name":"Luna demo site",
     "description":"Simple & powerful CMS",
     "delimiter":" / "
   },
+  "additional":{
+    "favicon_path":"assets/favicon.ico",
+    "xuacompatible":"IE=10",
+    "viewport":{
+      "width":"device-width",
+      "initial_scale":"1",
+      "maximum_scale":"1",
+      "user_scalable":"no"
+    },
+    "copyright":"Leonid Fedotov",
+    "index":true
+  },
   "template":{
     "header":"header.php",
     "footer":"footer.php",
     "admin":"admin.php"
+  },
+  "beatify":{
+    "code":true,
+    "json":true
   },
   "log":{
     "enabled":true,
@@ -30,6 +47,7 @@
     },
     {
       "urls":[
+        "demo",
         "hello/demo"
       ],
       "id":14983915899440,
@@ -37,10 +55,10 @@
     },
     {
       "urls":[
-        "выезд"
+        "hidden/redirect/page"
       ],
       "id":1234567890,
-      "redirect":"ремонт/техническое_обслуживание/выезд"
+      "redirect":"hello/demo"
     }
   ],
   "navigation":[

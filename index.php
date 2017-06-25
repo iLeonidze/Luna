@@ -86,6 +86,11 @@ function getExecutionTime(){
     return time()-$execution_start;
 }
 
+function getSiteURI(){
+    global $configuration;
+    return "http".($configuration['site']['https_supported'] ? "s" : "")."://".$configuration['site']['host']."/";
+}
+
 function getCurrentPage(){
     global $configuration;
     global $request_url;
@@ -100,10 +105,14 @@ function getCurrentPage(){
         if(isset($page['urls']) && is_array($page['urls']) && isset($page['id'])){
             foreach($page['urls'] as $url){
                 $console->trace("Proceeding #".$page['id'].", comparing \"".$url."\"");
-                if("/".$url==$request_url && ($page['id']==1||file_exists($paths["pages"].$page['id'].".json"))){
+                if("/".$url==$request_url && ($page['id']==1||isset($page['redirect'])||file_exists($paths["pages"].$page['id'].".json"))){
                     if($page['id']==1){
                         $console->trace("This is admin page");
                         return array('id'=>1);
+                    }
+                    if(isset($page['redirect'])){
+                        $console->trace("This is page with redirect");
+                        return $page;
                     }
                     $console->trace("Page determined, loading...");
                     $page_contents = json_decode(file_get_contents($paths['pages'].$page['id'].".json"),true);
@@ -139,14 +148,14 @@ switch($page["id"]){ // TODO: show multilanguage errors
         terminate();
 }
 
+
 if(isset($page["redirect"])&&is_string($page["redirect"])){
-    header('Location: '.$page["redirect"]); // TODO: prevent URI hack
+    header('Location: '.getSiteURI().$page["redirect"]);
     $console->trace("Page redirects to ".$page["redirect"]);
     terminate();
 }
 
-
-function getTitle(){
+function getTitle(){ // TODO: skip empty fields
     global $page;
     global $configuration;
     return $page['main']['title'].
@@ -154,6 +163,123 @@ function getTitle(){
             $configuration['site']['name'].
             $configuration['site']['delimiter'].
             $configuration['site']['description'];
+}
+
+function buildHeader(){ // TODO: minify function
+    global $configuration;
+    global $console;
+    global $page;
+    global $request_url;
+    $b = $configuration["beatify"]["code"];
+    $header = "<!DOCTYPE html>";
+    if($b){
+        $console->trace("Beatification is on");
+        $header .= "\r\n";
+    }else{
+        $console->trace("Beatification is off");
+    }
+    $header .= "<html prefix=\"og: http://ogp.me/ns#\">";
+    if($b) $header .= "\r\n\t";
+    $header .= "<head>";
+    if($b) $header .= "\r\n\t\t";
+    $header .= "<meta charset=\"utf-8\"/>";
+    if(isset($configuration["additional"]["xuacompatible"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta http-equiv=\"X-UA-Compatible\" content=\"".$configuration["additional"]["xuacompatible"]."\"/>";
+        $console->trace("meta.XUACompatible added");
+    }else{
+        $console->trace("meta.XUACompatible disabled");
+    }
+    if(isset($configuration["additional"]["viewport"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"viewport\" content=\"";
+        if(isset($configuration["additional"]["viewport"]["width"])) {
+            $header .= "width=" . $configuration["additional"]["viewport"]["width"] . ", ";
+        }
+        if(isset($configuration["additional"]["viewport"]["initial_scale"])) {
+            $header .= "initial-scale=" . $configuration["additional"]["viewport"]["initial_scale"] . ", ";
+        }
+        if(isset($configuration["additional"]["viewport"]["maximum_scale"])) {
+            $header .= "maximum-scale=" . $configuration["additional"]["viewport"]["maximum_scale"] . ", ";
+        }
+        if(isset($configuration["additional"]["viewport"]["user_scalable"])) {
+            $header .= "user-scalable=" . $configuration["additional"]["viewport"]["user_scalable"];
+        }
+        $header .= "\">";
+        $console->trace("meta.viewport added");
+    }else{
+        $console->trace("meta.viewport disabled");
+    }
+    if($b) $header .= "\r\n\t\t";
+    $header .= "<title>".getTitle()."</title>";
+    $console->trace("title added");
+    if(isset($configuration["additional"]["favicon_path"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<link rel=\"shortcut icon\" href=\"".getSiteURI().$configuration["additional"]["favicon_path"]."\" type=\"image/x-icon\">";
+        $console->trace("link.icon added");
+    }else{
+        $console->trace("link.icon disabled");
+    }
+    if(isset($page["optimization"]["description"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"description\" content=\"".$page["optimization"]["description"]."\">"; // TODO: add 150 words maximum check in UI!
+        $console->trace("meta.description added");
+    }else{
+        $console->trace("meta.description disabled");
+    }
+    if(isset($page["optimization"]["keywords"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"keywords\" content=\"".implode(",",$page["optimization"]["keywords"])."\">"; // TODO: add 10 keywords maximum check in UI!
+        $console->trace("meta.keywords added");
+    }else{
+        $console->trace("meta.keywords disabled");
+    }
+    if(isset($configuration["additional"]["index"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<link rel=\"index\" title=\"".$configuration['site']['name']."\" href=\"".getSiteURI()."\">"; // TODO: hide title if no site name
+        $console->trace("link.index added");
+    }else{
+        $console->trace("link.index disabled");
+    }
+    if(isset($page["robots"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"robots\" content=\"";
+        if(isset($page["page"]["robots"])&&$page["robots"]["index"]==false) $header .= "no";
+        $header .= "index,";
+        if(isset($page["robots"])&&$page["robots"]["follow"]==false) $header .= "no";
+        $header .= "follow\">";
+        $console->trace("meta.robots added");
+    }else{
+        $console->trace("meta.robots disabled");
+    }
+    if(isset($configuration["additional"]["copyright"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"copyright\" content=\"".$configuration["additional"]["copyright"]."\">";
+        $console->trace("meta.copyright added");
+    }else{
+        $console->trace("meta.copyright disabled");
+    }
+    if(isset($page["main"]["language"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"language\" content=\"".$page["main"]["language"]."\">";
+        $console->trace("meta.language added");
+    }else{
+        $console->trace("meta.language disabled");
+    }
+    if(sizeof($page["urls"])>1){
+        $console->trace("Current page have many URLs, canonical required");
+        foreach($page['urls'] as $url){
+            if("/".$url!==$request_url){
+                if($b) $header .= "\r\n\t\t";
+                $header .= "<link rel=\"canonical\" href=\"".getSiteURI().$url."\">";
+                $console->trace("Canonical added: ".$url);
+            }
+        }
+    }else{
+        $console->trace("Current page do no have other URLs");
+    }
+
+    return $header;
 }
 
 

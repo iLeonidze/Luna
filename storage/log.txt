@@ -1,53 +1,12 @@
 
-25.06.2017 09:16:57
-[INFO]	URI: /ремонт/техническое_обслуживание/выезд
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "ремонт/техническое_обслуживание/выезд"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:19:45
+26.06.2017 02:26:05
 [INFO]	URI: /hello/demo
 [INFO]	IP:  127.0.0.1
 [TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:20:54
-[INFO]	URI: /hello/demo
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:20:58
-[INFO]	URI: /hello/demo/
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Proceeding #1234567890, comparing "выезд"
+[TRACE]	Proceeding #1, comparing "admin" = 
+[TRACE]	Proceeding #14983915899440, comparing "demo" = 
+[TRACE]	Proceeding #14983915899440, comparing "hello/demos" = 
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page" = 
 [TRACE]	Seems to be there is no requested page
 [INFO]	Requested page not found
 [TRACE]	Server wants to send custom response code 404
@@ -56,28 +15,15 @@
 [TRACE]	Code file is not found, sending plain text
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:21:02
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:27:08
 [INFO]	URI: /hello/demo
 [INFO]	IP:  127.0.0.1
 [TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:21:19
-[INFO]	URI: /hello/demo/
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Proceeding #1234567890, comparing "выезд"
+[TRACE]	Proceeding #1, comparing "/admin" = /hello/demo
+[TRACE]	Proceeding #14983915899440, comparing "/demo" = /hello/demo
+[TRACE]	Proceeding #14983915899440, comparing "/hello/demos" = /hello/demo
+[TRACE]	Proceeding #1234567890, comparing "/hidden/redirect/page" = /hello/demo
 [TRACE]	Seems to be there is no requested page
 [INFO]	Requested page not found
 [TRACE]	Server wants to send custom response code 404
@@ -86,42 +32,197 @@
 [TRACE]	Code file is not found, sending plain text
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:21:22
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:27:58
 [INFO]	URI: /hello/demo
 [INFO]	IP:  127.0.0.1
 [TRACE]	Determining current page...
 [TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
 [TRACE]	Proceeding #14983915899440, comparing "hello/demo"
 [TRACE]	Page determined, loading...
 [TRACE]	Page loaded
 [TRACE]	Appending header...
+[TRACE]	Beatification is on
+[TRACE]	meta.XUACompatible added
+[TRACE]	meta.viewport added
+[TRACE]	title added
+[TRACE]	link.icon added
+[TRACE]	meta.description added
+[TRACE]	meta.keywords added
+[TRACE]	link.index added
+[TRACE]	meta.robots added
+[TRACE]	meta.copyright added
+[TRACE]	meta.language added
+[TRACE]	Current page have many URLs, canonical required
+[TRACE]	Canonical added: demo
 [TRACE]	Appending content...
 [TRACE]	Appending footer...
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:24:25
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:28:18
 [INFO]	URI: /hello/demo
 [INFO]	IP:  127.0.0.1
 [TRACE]	Determining current page...
 [TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
 [TRACE]	Proceeding #14983915899440, comparing "hello/demo"
 [TRACE]	Page determined, loading...
 [TRACE]	Page loaded
 [TRACE]	Appending header...
+[TRACE]	Beatification is on
+[TRACE]	meta.XUACompatible added
+[TRACE]	meta.viewport added
+[TRACE]	title added
+[TRACE]	link.icon added
+[TRACE]	meta.description added
+[TRACE]	meta.keywords added
+[TRACE]	link.index added
+[TRACE]	meta.robots added
+[TRACE]	meta.copyright added
+[TRACE]	meta.language added
+[TRACE]	Current page have many URLs, canonical required
+[TRACE]	Canonical added: demo
 [TRACE]	Appending content...
 [TRACE]	Appending footer...
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:24:28
-[INFO]	URI: /hello/demo/
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:28:23
+[INFO]	URI: /demo
 [INFO]	IP:  127.0.0.1
 [TRACE]	Determining current page...
 [TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Appending header...
+[TRACE]	Beatification is on
+[TRACE]	meta.XUACompatible added
+[TRACE]	meta.viewport added
+[TRACE]	title added
+[TRACE]	link.icon added
+[TRACE]	meta.description added
+[TRACE]	meta.keywords added
+[TRACE]	link.index added
+[TRACE]	meta.robots added
+[TRACE]	meta.copyright added
+[TRACE]	meta.language added
+[TRACE]	Current page have many URLs, canonical required
+[TRACE]	Canonical added: hello/demo
+[TRACE]	Appending content...
+[TRACE]	Appending footer...
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:28:25
+[INFO]	URI: /demo
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Appending header...
+[TRACE]	Beatification is on
+[TRACE]	meta.XUACompatible added
+[TRACE]	meta.viewport added
+[TRACE]	title added
+[TRACE]	link.icon added
+[TRACE]	meta.description added
+[TRACE]	meta.keywords added
+[TRACE]	link.index added
+[TRACE]	meta.robots added
+[TRACE]	meta.copyright added
+[TRACE]	meta.language added
+[TRACE]	Current page have many URLs, canonical required
+[TRACE]	Canonical added: hello/demo
+[TRACE]	Appending content...
+[TRACE]	Appending footer...
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:28:37
+[INFO]	URI: /demo
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Appending header...
+[TRACE]	Beatification is on
+[TRACE]	meta.XUACompatible added
+[TRACE]	meta.viewport added
+[TRACE]	title added
+[TRACE]	link.icon added
+[TRACE]	meta.description added
+[TRACE]	meta.keywords added
+[TRACE]	link.index added
+[TRACE]	meta.robots added
+[TRACE]	meta.copyright added
+[TRACE]	meta.language added
+[TRACE]	Current page have many URLs, canonical required
+[TRACE]	Canonical added: hello/demo
+[TRACE]	Appending content...
+[TRACE]	Appending footer...
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:28:56
+[INFO]	URI: /hidden/redirect/page
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
 [TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Proceeding #1234567890, comparing "выезд"
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page"
+[TRACE]	Page determined, loading...
+[ERROR]	Page #1234567890 is corrupted
+[TRACE]	Server can not show page
+[TRACE]	Server wants to send custom response code 500
+[TRACE]	Headers already sent
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:29:18
+[INFO]	URI: /hidden/redirect/page
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page"
+[TRACE]	Page determined, loading...
+[ERROR]	Page #1234567890 is corrupted
+[TRACE]	Server can not show page
+[TRACE]	Server wants to send custom response code 500
+[TRACE]	Headers already sent
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:31:01
+[INFO]	URI: /hidden/redirect/page
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page"
+[TRACE]	This is page with redirect
+[TRACE]	Page redirects to hello/demo
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:31:01
+[INFO]	URI: /hidden/redirect/hello/demo
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "admin"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page"
 [TRACE]	Seems to be there is no requested page
 [INFO]	Requested page not found
 [TRACE]	Server wants to send custom response code 404
@@ -130,120 +231,31 @@
 [TRACE]	Code file is not found, sending plain text
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:24:29
-[INFO]	URI: /hello/demo
+[LOG]	Memory usage: 0.46MB
+26.06.2017 02:32:03
+[INFO]	URI: /demo
 [INFO]	IP:  127.0.0.1
 [TRACE]	Determining current page...
 [TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo"
 [TRACE]	Page determined, loading...
 [TRACE]	Page loaded
 [TRACE]	Appending header...
+[TRACE]	Beatification is on
+[TRACE]	meta.XUACompatible added
+[TRACE]	meta.viewport added
+[TRACE]	title added
+[TRACE]	link.icon added
+[TRACE]	meta.description added
+[TRACE]	meta.keywords added
+[TRACE]	link.index added
+[TRACE]	meta.robots added
+[TRACE]	meta.copyright added
+[TRACE]	meta.language added
+[TRACE]	Current page have many URLs, canonical required
+[TRACE]	Canonical added: hello/demo
 [TRACE]	Appending content...
 [TRACE]	Appending footer...
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:25:00
-[INFO]	URI: /hello/demo
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:29:04
-[INFO]	URI: /hello/demo
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.41MB
-25.06.2017 09:29:09
-[INFO]	URI: /hello/demo
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.41MB
-25.06.2017 09:29:10
-[INFO]	URI: /favicon.ico
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Proceeding #1234567890, comparing "выезд"
-[TRACE]	Seems to be there is no requested page
-[INFO]	Requested page not found
-[TRACE]	Server wants to send custom response code 404
-[TRACE]	Sending custom header...
-[TRACE]	Headers done, searching for code file...
-[TRACE]	Code file is not found, sending plain text
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:29:11
-[INFO]	URI: /hello/demo
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.41MB
-25.06.2017 09:29:11
-[INFO]	URI: /favicon.ico
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Proceeding #1234567890, comparing "выезд"
-[TRACE]	Seems to be there is no requested page
-[INFO]	Requested page not found
-[TRACE]	Server wants to send custom response code 404
-[TRACE]	Sending custom header...
-[TRACE]	Headers done, searching for code file...
-[TRACE]	Code file is not found, sending plain text
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.4MB
-25.06.2017 09:29:46
-[INFO]	URI: /hello/demo
-[INFO]	IP:  127.0.0.1
-[TRACE]	Determining current page...
-[TRACE]	Proceeding #1, comparing "admin"
-[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
-[TRACE]	Page determined, loading...
-[TRACE]	Page loaded
-[TRACE]	Appending header...
-[TRACE]	Appending content...
-[TRACE]	Appending footer...
-[TRACE]	Terminating
-[LOG]	Execution time: 0ms
-[LOG]	Memory usage: 0.41MB
+[LOG]	Memory usage: 0.46MB

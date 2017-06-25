@@ -5,19 +5,37 @@
   "revisions":0,
   "main":{
     "title":"Demo page",
-    "breadcrumb":"First demo page"
+    "breadcrumb":"First demo page",
+    "language":"RU"
   },
   "content":"<h1>Hello world!</h1>",
-  "seo":{
-    "description":"",
+  "optimization":{
+    "description":"This is a demo page about the most simple ad powerful CMS in the world. It is opensource, try it for free right now!",
     "keywords":[
-
+      "cms",
+      "seo",
+      "site",
+      "admintool"
     ],
     "og":{
       "title":"",
       "images":[
-
-      ]
+        {
+          "path":"",
+          "width":200,
+          "height":150
+        },
+        {
+          "path":"",
+          "width":200,
+          "height":200
+        }
+      ],
+      "locale":"en_US"
     }
+  },
+  "robots":{
+    "index":true,
+    "follow":true
   }
 }
