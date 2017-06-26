@@ -144,7 +144,7 @@ switch($page["id"]){ // TODO: show multilanguage errors
         break;
     case 1:
         $console->trace("Loading admin page...");
-        require_once($paths['workspace'].$configuration['template']['admin']);
+        require_once($paths['workspace'].$configuration['workspace']['admin']);
         terminate();
 }
 
@@ -182,10 +182,10 @@ function buildHeader(){ // TODO: minify function
     if($b) $header .= "\r\n\t";
     $header .= "<head>";
     if($b) $header .= "\r\n\t\t";
-    $header .= "<meta charset=\"utf-8\"/>";
+    $header .= "<meta charset=\"utf-8\" />";
     if(isset($configuration["additional"]["xuacompatible"])){
         if($b) $header .= "\r\n\t\t";
-        $header .= "<meta http-equiv=\"X-UA-Compatible\" content=\"".$configuration["additional"]["xuacompatible"]."\"/>";
+        $header .= "<meta http-equiv=\"X-UA-Compatible\" content=\"".$configuration["additional"]["xuacompatible"]."\" />";
         $console->trace("meta.XUACompatible added");
     }else{
         $console->trace("meta.XUACompatible disabled");
@@ -205,7 +205,7 @@ function buildHeader(){ // TODO: minify function
         if(isset($configuration["additional"]["viewport"]["user_scalable"])) {
             $header .= "user-scalable=" . $configuration["additional"]["viewport"]["user_scalable"];
         }
-        $header .= "\">";
+        $header .= "\" />";
         $console->trace("meta.viewport added");
     }else{
         $console->trace("meta.viewport disabled");
@@ -222,14 +222,14 @@ function buildHeader(){ // TODO: minify function
     }
     if(isset($page["optimization"]["description"])){
         if($b) $header .= "\r\n\t\t";
-        $header .= "<meta name=\"description\" content=\"".$page["optimization"]["description"]."\">"; // TODO: add 150 words maximum check in UI!
+        $header .= "<meta name=\"description\" content=\"".$page["optimization"]["description"]."\" />"; // TODO: add 150 words maximum check in UI!
         $console->trace("meta.description added");
     }else{
         $console->trace("meta.description disabled");
     }
     if(isset($page["optimization"]["keywords"])){
         if($b) $header .= "\r\n\t\t";
-        $header .= "<meta name=\"keywords\" content=\"".implode(",",$page["optimization"]["keywords"])."\">"; // TODO: add 10 keywords maximum check in UI!
+        $header .= "<meta name=\"keywords\" content=\"".implode(",",$page["optimization"]["keywords"])."\" />"; // TODO: add 10 keywords maximum check in UI!
         $console->trace("meta.keywords added");
     }else{
         $console->trace("meta.keywords disabled");
@@ -244,28 +244,50 @@ function buildHeader(){ // TODO: minify function
     if(isset($page["robots"])){
         if($b) $header .= "\r\n\t\t";
         $header .= "<meta name=\"robots\" content=\"";
-        if(isset($page["page"]["robots"])&&$page["robots"]["index"]==false) $header .= "no";
+        if(isset($page["robots"]["index"])&&$page["robots"]["index"]==false) $header .= "no";
         $header .= "index,";
-        if(isset($page["robots"])&&$page["robots"]["follow"]==false) $header .= "no";
-        $header .= "follow\">";
+        if(isset($page["robots"]["follow"])&&$page["robots"]["follow"]==false) $header .= "no";
+        $header .= "follow";
+        if(isset($page["robots"]["archive"])){
+            $header .= ",";
+            if ($page["robots"]["archive"] == false) $header .= "no";
+            $header .= "archive";
+        }
+        if(isset($page["robots"]["odp"])) {
+            if ($page["robots"]["odp"] == false) {
+                $header .= ",noodp,noydir";
+            } else {
+                $header .= ",odp,ydir";
+            }
+        }
+        $header .= "\">";
         $console->trace("meta.robots added");
     }else{
         $console->trace("meta.robots disabled");
     }
     if(isset($configuration["additional"]["copyright"])){
         if($b) $header .= "\r\n\t\t";
-        $header .= "<meta name=\"copyright\" content=\"".$configuration["additional"]["copyright"]."\">";
+        $header .= "<meta name=\"copyright\" content=\"".$configuration["additional"]["copyright"]."\" />";
         $console->trace("meta.copyright added");
     }else{
         $console->trace("meta.copyright disabled");
     }
+    if(isset($page["main"]["author"])){
+        if($b) $header .= "\r\n\t\t";
+        $header .= "<meta name=\"author\" content=\"".$page["main"]["author"]."\" />";
+        $console->trace("meta.author added");
+    }else{
+        $console->trace("meta.author disabled");
+    }
     if(isset($page["main"]["language"])){
         if($b) $header .= "\r\n\t\t";
-        $header .= "<meta name=\"language\" content=\"".$page["main"]["language"]."\">";
+        $header .= "<meta name=\"language\" content=\"".$page["main"]["language"]."\" />";
         $console->trace("meta.language added");
     }else{
         $console->trace("meta.language disabled");
     }
+
+
     if(sizeof($page["urls"])>1){
         $console->trace("Current page have many URLs, canonical required");
         foreach($page['urls'] as $url){
@@ -283,13 +305,7 @@ function buildHeader(){ // TODO: minify function
 }
 
 
-$console->trace("Appending header...");
-require_once($paths['workspace'].$configuration['template']['header']);
-
-$console->trace("Appending content...");
-echo $page['content'];
-
-$console->trace("Appending footer...");
-require_once($paths['workspace'].$configuration['template']['footer']);
+$console->trace("Connecting template...");
+require_once($paths['workspace'].$configuration['workspace']['template']);
 
 terminate();

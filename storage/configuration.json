@@ -21,9 +21,8 @@
     "copyright":"Leonid Fedotov",
     "index":true
   },
-  "template":{
-    "header":"header.php",
-    "footer":"footer.php",
+  "workspace":{
+    "template":"demo_template.php",
     "admin":"admin.php"
   },
   "beatify":{

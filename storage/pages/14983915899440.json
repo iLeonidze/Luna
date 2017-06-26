@@ -6,9 +6,12 @@
   "main":{
     "title":"Demo page",
     "breadcrumb":"First demo page",
-    "language":"RU"
+    "language":"RU",
+    "author":"Leonid Fedotov"
   },
-  "content":"<h1>Hello world!</h1>",
+  "contents":{
+    "body":"<h1>Hello world!</h1>"
+  },
   "optimization":{
     "description":"This is a demo page about the most simple ad powerful CMS in the world. It is opensource, try it for free right now!",
     "keywords":[
