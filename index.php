@@ -3,38 +3,39 @@ $execution_start = time();
 session_start();
 $paths = array(
     'storage'=>'storage/',
+    'users'=>'storage/users/',
     'pages'=>'storage/pages/',
     'workspace'=>'storage/workspace/'
 );
 // TODO: fix file read error & check consistent
 $configuration = json_decode(file_get_contents($paths['storage']."configuration.json"),true);
 $request_url = urldecode($_SERVER['REQUEST_URI']);
-$version = 12345; // #.##.##
+$version = 10000; // #.##.##
 header('X-Powered-By: Luna '.getLunaVersionAsString());
 
 if($configuration['log']['enabled']){
-    require_once('storage/Console.php');
+    require_once('storage/libraries/Console.php');
 }else{
     class Console{
-    public function save(){
-        return $this;
+        public function save(){
+            return $this;
+        }
+        public function trace(){
+            return $this;
+        }
+        public function log(){
+            return $this;
+        }
+        public function info(){
+            return $this;
+        }
+        public function warn(){
+            return $this;
+        }
+        public function error(){
+            return $this;
+        }
     }
-    public function trace(){
-        return $this;
-    }
-    public function log(){
-        return $this;
-    }
-    public function info(){
-        return $this;
-    }
-    public function warn(){
-        return $this;
-    }
-    public function error(){
-        return $this;
-    }
-}
 }
 
 $console = new Console($configuration['log']['location'],$configuration['log']['level'], $configuration['log']['size']);
@@ -73,9 +74,10 @@ function terminate($code=null,$code_header='HTTP/1.0 200 OK',$reason=null){
     exit();
 }
 
-function getLunaVersionAsString(){
+function getLunaVersionAsString($value=-1){
     global $version;
-    return floor($version/10000).".".(($version-floor($version/10000)*10000)/100);
+    if($value<1) $value = $version;
+    return floor($value/10000).".".(($value-floor($value/10000)*10000)/100);
 }
 
 function generateID(){
@@ -107,7 +109,7 @@ function getCurrentPage(){
                 $console->trace("Proceeding #".$page['id'].", comparing \"".$url."\"");
                 if("/".$url==$request_url && ($page['id']==1||isset($page['redirect'])||file_exists($paths["pages"].$page['id'].".json"))){
                     if($page['id']==1){
-                        $console->trace("This is admin page");
+                        $console->trace("This is API page");
                         return array('id'=>1);
                     }
                     if(isset($page['redirect'])){
@@ -139,12 +141,12 @@ switch($page["id"]){ // TODO: show multilanguage errors
         terminate(500,"HTTP/1.0 500 Internal Server Error","Something went wrong, server is no longer to work.");
         break;
     case 0:
-        $console->info("Requested page not found");
+        $console->warn("Requested page not found");
         terminate(404, "HTTP/1.0 404 Not Found", "File not found.");
         break;
     case 1:
-        $console->trace("Loading admin page...");
-        require_once($paths['workspace'].$configuration['workspace']['admin']);
+        $console->trace("Loading API...");
+        require_once($paths['storage']."api.php");
         terminate();
 }
 

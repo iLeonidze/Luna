@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<?=$page['contents']['body']?>
+<?=$page['contents']['common_description']?>
 
 </body>
 </html>

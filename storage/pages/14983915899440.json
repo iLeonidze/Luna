@@ -10,7 +10,10 @@
     "author":"Leonid Fedotov"
   },
   "contents":{
-    "body":"<h1>Hello world!</h1>"
+    "common_name":"Some goodie",
+    "common_price":25,
+    "common_code":1234567890,
+    "common_description":"<p>This is demo description!</p>"
   },
   "optimization":{
     "description":"This is a demo page about the most simple ad powerful CMS in the world. It is opensource, try it for free right now!",

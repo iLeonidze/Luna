@@ -1,0 +1,104 @@
+[
+  {
+    "id":"good",
+    "name":"Товар",
+    "icon":"awecome-icon",
+    "sections":[
+      {
+        "id":"common",
+        "name":"Общая информация",
+        "objects":[
+          {
+            "object":"field",
+            "type":"text",
+            "id":"name",
+            "name":"Название товара",
+            "required":true,
+            "placeholder":"Безымянный товар",
+            "value":"Безымянный товар",
+            "description":"Полное название товара без артикула"
+          },
+          {
+            "object":"field",
+            "type":"number",
+            "id":"price",
+            "name":"Цена",
+            "required":true,
+            "description":"Стоимость товара в рублях.",
+            "range":{
+              "min":0,
+              "max":99999,
+              "step":1
+            }
+          },
+          {
+            "object":"field",
+            "type":"number",
+            "id":"code",
+            "name":"Артикул",
+            "required":true,
+            "description":"Код товара на складе."
+          },
+          {
+            "object":"field",
+            "type":"content",
+            "kind":"markdown",
+            "id":"description",
+            "name":"Описание товара",
+            "description":"Небольшое описание всех характеристик товара. Оно должно содержать основные преимущества этой модели перед остальными."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "home",
+    "name": "Главная страница",
+    "objects": [
+      {
+        "amount": 1,
+        "id": "common",
+        "name": "Общая информация",
+        "objects": [
+          {
+            "object": "field",
+            "id": "slider",
+            "name": "Фото слайдера",
+            "type": "files",
+            "kind": "image",
+            "description": "Вы можете загрузить фото для слайдера размером 1024х720"
+          },
+          {
+            "object": "field",
+            "id": "blogVisibility",
+            "type": "toggle",
+            "name": "Показывать блог",
+            "value": true
+          },
+          {
+            "object": "field",
+            "id": "blogVisibility",
+            "type": "selector",
+            "kind": "dropdown",
+            "name": "Цвет панели",
+            "value": [
+              {
+                "value":"red",
+                "name":"Красный"
+              },
+              {
+                "value":"green",
+                "name":"Зеленый"
+              },
+              {
+                "value":"blue",
+                "name":"Синий"
+              }
+            ],
+            "selected":"green"
+          }
+        ]
+      }
+    ]
+  }
+]

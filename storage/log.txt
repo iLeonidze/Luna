@@ -1,0 +1,259 @@
+
+29.06.2017 01:45:02
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[TRACE]	
+[LOG]	Unknown user provided incorrect login credentials
+[TRACE]	Server wants to send custom response code 403
+[TRACE]	Headers already sent
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.49MB
+29.06.2017 01:45:12
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[TRACE]	
+[LOG]	Unknown user provided incorrect login credentials
+[TRACE]	Server wants to send custom response code 403
+[TRACE]	Headers already sent
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.49MB
+29.06.2017 01:46:29
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[TRACE]	
+[LOG]	Unknown user provided incorrect login credentials
+[TRACE]	Server wants to send custom response code 403
+[TRACE]	Headers already sent
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.49MB
+29.06.2017 01:48:16
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[TRACE]	
+[LOG]	Unknown user provided incorrect login credentials
+[TRACE]	Server wants to send custom response code 403
+[TRACE]	Headers already sent
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.49MB
+29.06.2017 01:49:17
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[INFO]	User logged in as ileonidze
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.49MB
+29.06.2017 01:49:29
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.47MB
+29.06.2017 01:49:30
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.47MB
+29.06.2017 01:49:31
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.47MB
+29.06.2017 01:59:30
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[WARN]	@ileonidze requires unknown action
+[TRACE]	Server wants to send custom response code 501
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 01:59:44
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[TRACE]	@ileonidze logged out
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 01:59:47
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[LOG]	Unknown user tries to bypass auth
+[TRACE]	Server wants to send custom response code 405
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.49MB
+29.06.2017 02:04:29
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[INFO]	User logged in as ileonidze
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 02:04:36
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 02:05:05
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @ileonidze
+[TRACE]	@ileonidze logged out
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 02:05:21
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[LOG]	Unknown user tries to bypass auth
+[TRACE]	Server wants to send custom response code 405
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 02:05:28
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[LOG]	Unknown user came to API
+[TRACE]	Unknown user wants to auth
+[INFO]	User logged in as spartedo
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB
+29.06.2017 02:05:41
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @spartedo
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.5MB

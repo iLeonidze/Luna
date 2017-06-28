@@ -39,7 +39,7 @@
   "index":[
     {
       "urls":[
-        "admin"
+        "luna/api"
       ],
       "id":1,
       "hidden":true
@@ -50,14 +50,24 @@
         "hello/demo"
       ],
       "id":14983915899440,
-      "hidden":false
+      "hidden":false,
+      "type":"good"
+    },
+    {
+      "urls":[
+        ""
+      ],
+      "id":14983915905589,
+      "hidden":false,
+      "type":"main"
     },
     {
       "urls":[
         "hidden/redirect/page"
       ],
       "id":1234567890,
-      "redirect":"hello/demo"
+      "redirect":"hello/demo",
+      "type":"good"
     }
   ],
   "navigation":[

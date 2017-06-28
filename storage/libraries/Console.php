@@ -1,6 +1,7 @@
 <?php
 class Console
 {
+    public static $version=10000;
     private $log = '';
     private $logfile_path = '';
     private $log_level = 0;
