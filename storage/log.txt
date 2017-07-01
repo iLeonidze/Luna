@@ -257,3 +257,18 @@
 [TRACE]	Terminating
 [LOG]	Execution time: 0ms
 [LOG]	Memory usage: 0.5MB
+02.07.2017 02:09:43
+[INFO]	URI: /luna/api
+[INFO]	IP:  127.0.0.1
+[TRACE]	Determining current page...
+[TRACE]	Proceeding #1, comparing "luna/api"
+[TRACE]	This is API page
+[TRACE]	Loading API...
+[TRACE]	Working with authed user @spartedo
+[TRACE]	Server wants to send custom response code 200
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
+[LOG]	Execution time: 0ms
+[LOG]	Memory usage: 0.69MB

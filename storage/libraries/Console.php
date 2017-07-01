@@ -6,7 +6,7 @@ class Console
     private $logfile_path = '';
     private $log_level = 0;
     private $logfile_size = 0;
-    function Console($logfile_path,$log_level=0,$logfile_size=10485760){
+    function __construct($logfile_path, $log_level=0, $logfile_size=10485760){
         $this->log_level = $log_level;
         $this->logfile_path = $logfile_path;
         $this->logfile_size = $logfile_size*1024;
