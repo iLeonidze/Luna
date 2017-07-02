@@ -1,17 +1,19 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 
 class DataModel{
+    private $datamodelArray = null;
     private $datamodel = null;
     function __construct(){
         global $console;
         global $paths;
         $console->trace("Loading DataModel...");
         try{
-            $datamodelArray = json_decode(file_get_contents($paths["workspace"]."datamodel.json"),true);
+            $this->datamodelArray = json_decode(file_get_contents($paths["workspace"]."datamodel.json"),true);
             $console->trace("Pacing DataModel...");
             $this->datamodel = array();
-            foreach ($datamodelArray as $pageType){
+            foreach ($this->datamodelArray as $pageType){
                 if(
                     !is_null($pageType) &&
                     is_array($pageType)
@@ -24,8 +26,10 @@ class DataModel{
             $this->datamodel = null;
         }
     }
+    public function getArray(){
+        return $this->datamodelArray;
+    }
 }
-
 class PageType{
     private $pageType = null;
     function __construct($pageType){
@@ -142,7 +146,6 @@ class PageType{
         return null;
     }
 }
-
 class PageTypeSection{
     private $pageTypeSection = null;
     function __construct($pageTypeSection){
@@ -248,7 +251,6 @@ class PageTypeSection{
         return null;
     }
 }
-
 class SectionObject{
     private $object = null;
     function __construct($object){
@@ -490,6 +492,9 @@ class SectionObject{
     }
 }
 
+function generateID(){
+    return (time()+microtime())*10000;
+}
 
 if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login"]).".json")){
     $console->log("Unknown user came to API");
@@ -503,7 +508,6 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
             terminate(400,"HTTP/1.0 400 Bad Request","{\"error\":\"Login or password fields are missing\"}");
         }else{
             $user = @json_decode(@file_get_contents($paths["users"].md5($_POST["login"]).".json"),true);
-            //$console->trace(file_get_contents($paths["users"].md5($_POST["login"]).".json"));
             if(!is_null($user)&&isset($user["password"])&&$user["password"]==md5($_POST["password"])){
                 $_SESSION["login"] = basename($_POST["login"]);
                 $console->info("User logged in as ".$_SESSION["login"]);
@@ -517,7 +521,7 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
 }else{
     $console->trace("Working with authed user @".$_SESSION["login"]);
     try {
-        $user = json_decode(file_get_contents($paths["users"] . md5($_POST["login"]) . ".json"), true);
+        $user = @json_decode(@file_get_contents($paths["users"] . md5($_POST["login"]) . ".json"), true);
     }catch (Error $error){
         session_destroy();
         terminate(500,"HTTP/1.0 500 Internal Server Error","{\"error\":\"User profile file is corrupted or in use\"}");
@@ -538,9 +542,55 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
                 )
             )));
             break;
-        case "createPage":
+
+
+
+
+        case "getPages":
+            // TODO: add filter by page type
+            // TODO: add filter by search
+            // TODO: add pages list size managing
+            break;
+        case "getPage":
+            if(!isset($_POST['id'])&&isset($_POST['uri'])){
+                terminate(400,"HTTP/1.0 400 Bad Request",json_encode(array(
+                    "error"=>true
+                )));
+            }
+            if(isset($_POST['uri'])){
+                $page = new Page($_POST["uri"]);
+            }else{
+                $page = new Page((float)$_POST["id"]);
+            }
+            if(!$page->isValid()){
+                terminate(222,"HTTP/1.0 422 Unprocessable Entity",json_encode(array(
+                    "error"=>true
+                )));
+            }
+            terminate(200,"HTTP/1.0 200 OK",json_encode(array(
+                "error"=>false,
+                "data"=>$page->getArray()
+            )));
+            break;
+
+
+
+
+        case "getDataModel":
+            $dataModel = new DataModel();
+            terminate(200,"HTTP/1.0 200 OK",json_encode(array(
+                "error"=>false,
+                "data"=>$dataModel->getArray()
+            )));
+            break;
+        case "savePage":
+            $dataModel = new DataModel();
             // TODO
             break;
+
+
+
+
         default:
             $console->warn("@".$_SESSION["login"]." requires unknown action");
             terminate(501,"HTTP/1.0 501 Not Implemented","{\"error\":\"Action is not supported\"}");

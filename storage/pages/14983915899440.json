@@ -5,15 +5,17 @@
   "revisions":0,
   "main":{
     "title":"Demo page",
-    "breadcrumb":"First demo page",
     "language":"RU",
     "author":"Leonid Fedotov"
   },
+  "parents":[
+    14983915905589
+  ],
   "contents":{
     "common_name":"Some goodie",
     "common_price":25,
     "common_code":1234567890,
-    "common_description":"<p>This is demo description!</p>"
+    "common_description":"<i>This is demo description!</i>"
   },
   "optimization":{
     "description":"This is a demo page about the most simple ad powerful CMS in the world. It is opensource, try it for free right now!",
@@ -23,16 +25,23 @@
       "site",
       "admintool"
     ],
+    "twitter":{
+      "author":"ileonidze",
+      "card":"summary_large_image",
+      "image":"assets/1.jpg"
+    },
     "og":{
-      "title":"",
+      "title":"Hello demo!",
+      "description":"Pretty short description for social networks!",
+      "type":"article",
       "images":[
         {
-          "path":"",
+          "path":"assets/1.jpg",
           "width":200,
           "height":150
         },
         {
-          "path":"",
+          "path":"assets/2.jpg",
           "width":200,
           "height":200
         }
