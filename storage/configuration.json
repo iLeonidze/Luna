@@ -40,19 +40,12 @@
   },
   "log":{
     "enabled":true,
-    "level":1,
+    "level":0,
     "size":10240,
     "location":"storage/log.txt",
     "statistics":true
   },
   "index":[
-    {
-      "urls":[
-        "luna/api"
-      ],
-      "id":1,
-      "hidden":true
-    },
     {
       "urls":[
         "demo",
@@ -77,10 +70,37 @@
       ],
       "id":1234567890,
       "redirect":"hello/demo",
-      "type":"good"
+      "type":"test"
     }
   ],
   "navigation":[
-
+    {
+      "name":"Главная страница",
+      "link":"demo",
+      "children":[
+        {
+          "name":"Субэлемент",
+          "link":"hello/demo"
+        },
+        {
+          "name":"Еще один элемент",
+          "link":"hello/demo"
+        }
+      ]
+    },
+    {
+      "name":"Очередной пункт",
+      "link":"hello/demo",
+      "children":[
+        {
+          "name":"Рекурсия!",
+          "link":"1"
+        },
+        {
+          "name":"Цикл!",
+          "link":"2"
+        }
+      ]
+    }
   ]
 }

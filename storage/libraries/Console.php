@@ -15,7 +15,6 @@ class Console
 
     // TODO: Do not rewrite file, cut unnecessary part
     public function save(){
-        global $console;
         file_put_contents(
             $this->logfile_path,
             $this->log,

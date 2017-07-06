@@ -1,186 +1,148 @@
 
-03.07.2017 01:06:07
-[INFO]	URI: /luna/api
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.88MB
-03.07.2017 01:06:33
-[INFO]	URI: /luna/api
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.88MB
-03.07.2017 01:06:38
+07.07.2017 01:59:48
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Connecting template...
+[TRACE]	Beatification is on
+[TRACE]	Page search initialized
+[TRACE]	Checking #14983915899440
+[INFO]	#14983915899440 is checked!
+[TRACE]	#14983915899440 added as /demo
+[TRACE]	Checking #14983915905589
+[TRACE]	Checking #1234567890
+[TRACE]	Loading page /demo to array for return
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:41
+[INFO]	Memory usage: 0.87MB
+07.07.2017 02:00:07
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Connecting template...
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:42
+[INFO]	Memory usage: 0.86MB
+07.07.2017 02:01:16
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Connecting template...
+[TRACE]	Beatification is on
+[TRACE]	Page search initialized
+[TRACE]	Checking #14983915899440
+[INFO]	#14983915899440 is checked!
+[TRACE]	#14983915899440 added as /demo
+[TRACE]	Checking #14983915905589
+[TRACE]	Checking #1234567890
+[TRACE]	Loading page /demo to array for return
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:43
+[INFO]	Memory usage: 0.87MB
+07.07.2017 02:01:30
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Proceeding #14983915905589, comparing ""
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page"
+[WARN]	Requested page not found
+[TRACE]	Server wants to send custom response code 404
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:43
+[INFO]	Memory usage: 0.85MB
+07.07.2017 02:02:14
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Proceeding #14983915905589, comparing ""
+[TRACE]	Proceeding #1234567890, comparing "hidden/redirect/page"
+[WARN]	Requested page not found
+[TRACE]	Server wants to send custom response code 404
+[TRACE]	Sending custom header...
+[TRACE]	Headers done, searching for code file...
+[TRACE]	Code file is not found, sending plain text
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:44
+[INFO]	Memory usage: 0.85MB
+07.07.2017 02:02:20
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Connecting template...
+[TRACE]	Beatification is on
+[TRACE]	Page search initialized
+[TRACE]	Checking #14983915899440
+[INFO]	#14983915899440 is checked!
+[TRACE]	#14983915899440 added as /demo
+[TRACE]	Checking #14983915905589
+[TRACE]	Checking #1234567890
+[TRACE]	Loading page /demo to array for return
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:44
+[INFO]	Memory usage: 0.87MB
+07.07.2017 02:02:49
 [INFO]	URI: /demo/hello
 [INFO]	IP:  127.0.0.1
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Proceeding #14983915899440, comparing "hello/demo"
+[TRACE]	Proceeding #14983915899440, comparing "demo/hello"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Connecting template...
+[TRACE]	Beatification is on
+[TRACE]	Page search initialized
+[TRACE]	Checking #14983915899440
+[INFO]	#14983915899440 is checked!
+[TRACE]	#14983915899440 added as /demo
+[TRACE]	Checking #14983915905589
+[TRACE]	Checking #1234567890
+[TRACE]	Loading page /demo to array for return
+[TRACE]	Loading page via URI...
+[TRACE]	Proceeding #14983915899440, comparing "demo"
+[TRACE]	Page determined, loading...
+[TRACE]	Page loaded
+[TRACE]	Terminating
 [INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:06:45
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.67MB
-03.07.2017 01:08:08
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.68MB
-03.07.2017 01:12:18
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:13:42
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:00
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:01
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:02
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:02
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:03
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:04
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:04
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:05
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:06
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:06
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:07
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:07
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:08
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:09
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:16:09
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.69MB
-03.07.2017 01:22:18
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.7MB
-03.07.2017 01:29:10
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.7MB
-03.07.2017 01:29:30
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.7MB
-03.07.2017 01:56:41
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.74MB
-03.07.2017 01:57:22
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.74MB
-03.07.2017 01:58:03
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.75MB
-03.07.2017 02:00:22
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.76MB
-03.07.2017 02:04:34
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.76MB
-03.07.2017 02:05:12
-[INFO]	URI: /demo/hello
-[INFO]	IP:  127.0.0.1
-[INFO]	Execution time: 0ms
-[INFO]	Memory usage: 0.76MB
+[INFO]	Memory usage: 0.87MB
