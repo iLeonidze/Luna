@@ -62,7 +62,7 @@
       ],
       "id":14983915905589,
       "hidden":false,
-      "type":"main"
+      "type":"good"
     },
     {
       "urls":[
@@ -70,7 +70,7 @@
       ],
       "id":1234567890,
       "redirect":"hello/demo",
-      "type":"test"
+      "type":"main"
     }
   ],
   "navigation":[

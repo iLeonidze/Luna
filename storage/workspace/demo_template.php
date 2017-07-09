@@ -36,10 +36,15 @@
 
         <div><?php
                 $goodsPages = new Search();
-                $foundGoodsPages = $goodsPages->byType("good")->from(0)->to(1)->find();
-                foreach ($foundGoodsPages as $goodPage){
+                $foundGoodsPages = $goodsPages
+                    ->byType("good")
+                    ->find()
+                    ->asHierarchyWithParents()
+                    ->get();
+                print_r($foundGoodsPages);
+                /*foreach ($foundGoodsPages as $goodPage){
                     echo "\r\n\t\t\t#".$goodPage->getID()."<br>";
-                }
+                }*/
             ?>
         </div>
     </body>

@@ -1,1 +1,53 @@
-data!
+{
+  "version":10000,
+  "created":123,
+  "modified":123,
+  "revisions":0,
+  "main":{
+    "title":"DUPLICATE",
+    "language":"RU",
+    "author":"Leonid Fedotov"
+  },
+  "parents":[
+  ],
+  "contents":{
+    "common_name":"DUPLICATE",
+    "common_price":25,
+    "common_code":1234567890,
+    "common_description":"DUPLICATE",
+    "common_state":true
+  },
+  "optimization":{
+    "description":"DUPLICATE",
+    "keywords":[
+      "DUPLICATE"
+    ],
+    "twitter":{
+      "author":"DUPLICATE",
+      "card":"summary_large_image",
+      "image":"assets/1.jpg"
+    },
+    "og":{
+      "title":"DUPLICATE",
+      "description":"DUPLICATE",
+      "type":"article",
+      "images":[
+        {
+          "path":"assets/1.jpg",
+          "width":200,
+          "height":150
+        },
+        {
+          "path":"assets/2.jpg",
+          "width":200,
+          "height":200
+        }
+      ],
+      "locale":"en_US"
+    }
+  },
+  "robots":{
+    "index":true,
+    "follow":true
+  }
+}

@@ -7,6 +7,7 @@ $paths = array(
     'workspace' => 'storage/workspace/'
 );
 // TODO: fix file read error & check consistent
+// TODO: minify logs & cleanup it
 $configuration = json_decode(file_get_contents($paths['storage'] . "configuration.json"), true);
 $request_url = urldecode($_SERVER['REQUEST_URI']);
 $version = 10000; // #.##.##
@@ -107,6 +108,17 @@ class Page
             )
         ) $page = null;
     }
+    private function parentsHierarchyBuilder($p=false){
+        $a = null;
+        foreach (array_reverse($this->getParentsPagesIDs()) as $i){
+            $a = array(
+                $p
+                    ? new Page($i)
+                    : $i
+            ,$a);
+        }
+        return $a;
+    }
 
     public function isValid()
     {
@@ -159,7 +171,6 @@ class Page
     {
         return
             isset($this->page["redirect"]) &&
-            !is_null($this->page["redirect"]) &&
             is_string($this->page["redirect"]);
     }
 
@@ -203,10 +214,8 @@ class Page
     {
         return
             isset($this->page["main"]) &&
-            !is_null($this->page["main"]) &&
             is_array($this->page["main"]) &&
             isset($this->page["main"]["title"]) &&
-            !is_null($this->page["main"]["title"]) &&
             is_string($this->page["main"]["title"])
                 ? $this->page["main"]["title"]
                 : null;
@@ -223,7 +232,6 @@ class Page
                 : ""
             ) .
             (
-            !is_null($title) &&
             isset($configuration['site']) &&
             is_array($configuration['site']) &&
             (
@@ -281,10 +289,8 @@ class Page
     { // TODO: add 150 words maximum check in UI!
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["description"]) &&
-            !is_null($this->page["optimization"]["description"]) &&
             is_string($this->page["optimization"]["description"])
                 ? $this->page["optimization"]["description"]
                 : null;
@@ -294,10 +300,8 @@ class Page
     { // TODO: add 10 keywords maximum check in UI!
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["keywords"]) &&
-            !is_null($this->page["optimization"]["keywords"]) &&
             is_array($this->page["optimization"]["keywords"])
                 ? $this->page["optimization"]["keywords"]
                 : null;
@@ -307,10 +311,8 @@ class Page
     {
         return
             isset($this->page["main"]) &&
-            !is_null($this->page["main"]) &&
             is_array($this->page["main"]) &&
             isset($this->page["main"]["author"]) &&
-            !is_null($this->page["main"]["author"]) &&
             is_string($this->page["main"]["author"])
                 ? $this->page["main"]["author"]
                 : null;
@@ -320,10 +322,8 @@ class Page
     {
         return
             isset($this->page["main"]) &&
-            !is_null($this->page["main"]) &&
             is_array($this->page["main"]) &&
             isset($this->page["main"]["language"]) &&
-            !is_null($this->page["main"]["language"]) &&
             is_string($this->page["main"]["language"])
                 ? $this->page["main"]["language"]
                 : null;
@@ -377,46 +377,60 @@ class Page
 
     public function getParentPageID()
     {
-        $parentsHierarchy = $this->getParentPageHierarchy();
+        $a = $this->getParentsPagesIDs();
         return
-            !is_null($parentsHierarchy) &&
-            is_array($parentsHierarchy) &&
-            isset($parentsHierarchy[0]) &&
-            !is_null($parentsHierarchy[0]) &&
-            is_numeric($parentsHierarchy[0])
-                ? $parentsHierarchy[0]
+            is_array($a) &&
+            isset($a[0]) &&
+            is_numeric($a[0])
+                ? $a[0]
                 : null;
     }
 
     public function getParentPage()
     {
-        $parentID = $this->getParentPageID();
+        $i = $this->getParentPageID();
         return
-            !is_null($parentID)
-                ? new Page($parentID)
+            !is_null($i)
+                ? new Page($i)
                 : null;
     }
 
-    public function getParentPageHierarchy()
+    public function getParentsPagesIDs()
     {
         return
             isset($this->page["parents"]) &&
             is_array($this->page["parents"])
                 ? $this->page["parents"]
-                : null;
+                : array();
+    }
+
+    public function getParentsPages()
+    {
+        $r = array();
+        foreach ($this->getParentsPagesIDs() as $i){
+            array_push($r, new Page($i));
+        }
+        return $r;
+    }
+
+    public function getParentsPagesIDsHierarchy() // children - at top, parent - at bottom
+    {
+        return $this->parentsHierarchyBuilder();
+    }
+
+    public function getParentsPagesHierarchy() // children - at top, parent - at bottom
+    {
+        return $this->parentsHierarchyBuilder(true);
     }
 
     public function getOGTitle()
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["og"]) &&
-            !is_null($this->page["optimization"]["og"]) &&
             is_array($this->page["optimization"]["og"]) &&
             isset($this->page["optimization"]["og"]["title"]) &&
-            !is_null($this->page["optimization"]["og"]["title"]) &&
             is_string($this->page["optimization"]["og"]["title"])
                 ? $this->page["optimization"]["og"]["title"]
                 : null;
@@ -426,13 +440,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["og"]) &&
-            !is_null($this->page["optimization"]["og"]) &&
             is_array($this->page["optimization"]["og"]) &&
             isset($this->page["optimization"]["og"]["description"]) &&
-            !is_null($this->page["optimization"]["og"]["description"]) &&
             is_string($this->page["optimization"]["og"]["description"])
                 ? $this->page["optimization"]["og"]["description"]
                 : null;
@@ -442,13 +453,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["og"]) &&
-            !is_null($this->page["optimization"]["og"]) &&
             is_array($this->page["optimization"]["og"]) &&
             isset($this->page["optimization"]["og"]["type"]) &&
-            !is_null($this->page["optimization"]["og"]["type"]) &&
             is_string($this->page["optimization"]["og"]["type"])
                 ? $this->page["optimization"]["og"]["type"]
                 : null;
@@ -458,13 +466,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["og"]) &&
-            !is_null($this->page["optimization"]["og"]) &&
             is_array($this->page["optimization"]["og"]) &&
             isset($this->page["optimization"]["og"]["locale"]) &&
-            !is_null($this->page["optimization"]["og"]["locale"]) &&
             is_string($this->page["optimization"]["og"]["locale"])
                 ? $this->page["optimization"]["og"]["locale"]
                 : null;
@@ -474,13 +479,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["og"]) &&
-            !is_null($this->page["optimization"]["og"]) &&
             is_array($this->page["optimization"]["og"]) &&
             isset($this->page["optimization"]["og"]["images"]) &&
-            !is_null($this->page["optimization"]["og"]["images"]) &&
             is_array($this->page["optimization"]["og"]["images"])
                 ? $this->page["optimization"]["og"]["images"]
                 : array();
@@ -490,7 +492,6 @@ class Page
     {
         global $configuration;
         return
-            !is_null($configuration["additional"]["twitterid"]) &&
             is_string($configuration["additional"]["twitterid"])
                 ? "@" . $configuration["additional"]["twitterid"]
                 : "";
@@ -500,13 +501,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["twitter"]) &&
-            !is_null($this->page["optimization"]["twitter"]) &&
             is_array($this->page["optimization"]["twitter"]) &&
             isset($this->page["optimization"]["twitter"]["author"]) &&
-            !is_null($this->page["optimization"]["twitter"]["author"]) &&
             is_string($this->page["optimization"]["twitter"]["author"])
                 ? "@" . $this->page["optimization"]["twitter"]["author"]
                 : null;
@@ -516,13 +514,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["twitter"]) &&
-            !is_null($this->page["optimization"]["twitter"]) &&
             is_array($this->page["optimization"]["twitter"]) &&
             isset($this->page["optimization"]["twitter"]["card"]) &&
-            !is_null($this->page["optimization"]["twitter"]["card"]) &&
             is_string($this->page["optimization"]["twitter"]["card"])
                 ? $this->page["optimization"]["twitter"]["card"]
                 : null;
@@ -532,13 +527,10 @@ class Page
     {
         return
             isset($this->page["optimization"]) &&
-            !is_null($this->page["optimization"]) &&
             is_array($this->page["optimization"]) &&
             isset($this->page["optimization"]["twitter"]) &&
-            !is_null($this->page["optimization"]["twitter"]) &&
             is_array($this->page["optimization"]["twitter"]) &&
             isset($this->page["optimization"]["twitter"]["image"]) &&
-            !is_null($this->page["optimization"]["twitter"]["image"]) &&
             is_string($this->page["optimization"]["twitter"]["image"])
                 ? $this->page["optimization"]["twitter"]["image"]
                 : null;
@@ -560,7 +552,6 @@ class Page
         global $configuration;
         $navigation = array();
         if (
-            !is_null($configuration['navigation']) &&
             is_array($configuration['navigation'])
         ) foreach ($configuration['navigation'] as $e) {
             array_push($navigation, new Navigation($e));
@@ -610,11 +601,10 @@ class Page
 
     public function getHTMLFavicon($p = "")
     {
-        // TODO: load another favicon from page
         global $configuration;
         return
             isset($configuration["additional"]["favicon_path"])
-                ? $p . "<link rel=\"shortcut icon\" href=\"" . getSiteURI() . $configuration["additional"]["favicon_path"] . "\" type=\"image/x-icon\">"
+                ? $p . "<link rel=\"shortcut icon\" href=\"" . insureURL($configuration["additional"]["favicon_path"]) . "\" type=\"image/x-icon\">"
                 : "";
     }
 
@@ -637,11 +627,17 @@ class Page
     }
 
     public function getHTMLIndex($p = "")
-    { // TODO: hide title if no site name
+    {
         global $configuration;
         return
             !is_null($configuration['site']['name'])
-                ? $p . "<link rel=\"index\" title=\"" . $configuration['site']['name'] . "\" href=\"" . getSiteURI() . "\">"
+                ? $p . "<link rel=\"index\""
+                    .(
+                        isset($configuration['site']['name']) &&
+                        is_string($configuration['site']['name'])
+                            ? " title=\"" . $configuration['site']['name'] . "\""
+                            : "")
+                    ." href=\"" . getSiteURI() . "\">"
                 : "";
     }
 
@@ -784,7 +780,6 @@ class Page
     {
         global $configuration;
         return
-            !is_null($configuration['additional']['fbid']) &&
             is_numeric($configuration['additional']['fbid'])
                 ? $p . "<meta property=\"fb:app_id\" content=\"" . $configuration['additional']['fbid'] . "\" />"
                 : "";
@@ -960,28 +955,19 @@ class Page
 
     public function setStyle($css = null)
     {
-        if (
-            !is_null($css) &&
-            is_string($css)
-        ) array_push($this->styles, $css);
+        if (is_string($css)) array_push($this->styles, $css);
         return $this;
     }
 
     public function setJSFile($filename = null, $async = false, $defer = false)
     {
-        if (
-            !is_null($filename) &&
-            is_string($filename)
-        ) array_push($this->jsfiles, array($filename, $async, $defer));
+        if (is_string($filename)) array_push($this->jsfiles, array($filename, $async, $defer));
         return $this;
     }
 
     public function setJSCode($code = null)
     {
-        if (
-            !is_null($code) &&
-            is_string($code)
-        ) array_push($this->jscodes, $code);
+        if (is_string($code)) array_push($this->jscodes, $code);
         return $this;
     }
 }
@@ -1001,7 +987,9 @@ class Navigation
         if (
             isset($array["link"]) &&
             is_string($array["link"])
-        ) $this->link = $array["link"];
+        ){
+            $this->link = insureURL($array["link"]);
+        }
         if (
             !isset($array["children"]) ||
             !is_array($array["children"])
@@ -1033,7 +1021,10 @@ class Search
     private $from = 0;
     private $to = null;
     private $type = null;
+    private $keywords = array();
     private $conditions = array();
+
+    private $found = array();
 
     function __construct()
     {
@@ -1059,31 +1050,88 @@ class Search
     }
 
     public function where($section,$field){
-        array_push($conditions,array($section."_".$field,null));
+        array_push($this->conditions,array(array($section,$field),null));
         return $this;
     }
     public function isEqualTo($value){
-        end($conditions);
-        $conditions[key($array)][1] = array("=",$value);
+        end($this->conditions);
+        $this->conditions[key($this->conditions)][1] = array("=",$value);
         return $this;
     }
     public function isSimilarTo($value){
-        end($conditions);
-        $conditions[key($array)][1] = array("~",$value);
+        end($this->conditions);
+        $this->conditions[key($this->conditions)][1] = array("~",$value);
+        return $this;
+    }
+    public function contains($value){
+        end($this->conditions);
+        $this->conditions[key($this->conditions)][1] = array("~~",$value);
         return $this;
     }
     public function isGreaterThan($value){
-        end($conditions);
-        $conditions[key($array)][1] = array(">",$value);
+        end($this->conditions);
+        $this->conditions[key($this->conditions)][1] = array(">",$value);
         return $this;
     }
     public function isLessThan($value){
-        end($conditions);
-        $conditions[key($array)][1] = array("<",$value);
+        end($this->conditions);
+        $this->conditions[key($this->conditions)][1] = array("<",$value);
+        return $this;
+    }
+    public function withKeyword($keyword){
+        array_push($this->keywords,$keyword);
+        return $this;
+    }
+    // withTitle
+    // withParent
+    // withURL
+    // withLanguage
+    // withAuthor
+    // modifiedAfter
+    // modifiedBefore
+    // suggest(true)
+
+    public function asIDsHierarchyWithParents(){
+        return $this->buildHierarchy(false);
+    }
+    public function asHierarchyWithParents(){
+        return $this->buildHierarchy(true);
+    }
+
+    private function buildHierarchy($m){ // true = pages, false = ids
+        $a = array(null,array());
+        foreach ($this->found as $f){
+            if(is_string($f)){
+                $f = new Page($f);
+            }
+            $h = $f->getParentsPagesIDs();
+            array_unshift($h,$m ? $f : $f->getID());
+            $a = $this->buildHierarchyBuilder($a, array_reverse($h), $m);
+        }
+        $this->found = $a[1];
         return $this;
     }
 
-
+    private function buildHierarchyBuilder($a, $h, $m){ // from parent to child
+        global $console;
+        $e = null;
+        foreach ($a[1] as $key=>$value){
+            if($m ? @$value[0]->getID() : $value[0] == is_object($h[0]) ? $h[0]->getID() : $h[0]){
+                $e = $key;
+            }
+        }
+        if(is_null($e)){
+            array_push($a[1],array($m && is_numeric($h[0]) ? new Page($h[0]) : $h[0],array()));
+            $e = 0;
+        }
+        array_shift($h);
+        if(count($h)>0){
+            $console->trace("Queue is not empty!");
+            $a[1][$e] = $this->buildHierarchyBuilder($a[1][$e], $h, $m);
+        }else{
+        }
+        return $a;
+    }
 
     public function findAsList()
     {
@@ -1094,10 +1142,11 @@ class Search
             foreach ($searchResults as $page){
                 array_push($searchResultsAsPages,$page->getURL());
             }
-            return $searchResultsAsPages;
+            $this->found = $searchResultsAsPages;
         }else{
-            return $searchResults;
+            $this->found = $searchResults;
         }
+        return $this;
     }
 
     public function find()
@@ -1106,7 +1155,7 @@ class Search
         $searchResults = $this->search();
         if(isset($searchResults[0]) &&
             is_object($searchResults[0])){
-            return $searchResults;
+            $this->found = $searchResults;
         }else{
             $pagesList = array();
             foreach ($searchResults as $page) {
@@ -1117,13 +1166,15 @@ class Search
                     !$loadedPage->isHidden()
                 ) array_push($pagesList, $loadedPage);
             }
-            return $pagesList;
+            $this->found = $pagesList;
 
         }
+        return $this;
     }
 
-
-
+    public function get(){
+        return $this->found;
+    }
 
     private function search()
     {
@@ -1137,9 +1188,57 @@ class Search
                 $console->trace("Checking #" . $page['id']);
                 $checked = false;
                 if ($this->checkType($page)) { // TODO +more
-                    $console->info("#" . $page['id'] . " is checked!");
-                    $checked = true;
-                    $checkedAmount++;
+                    if(count($this->conditions)==0) {
+                        $console->info("#" . $page['id'] . " is checked!");
+                        $checked = "/" . array_shift($page['urls']);
+                        $checkedAmount++;
+                    }else{
+                        $checked = new Page("/".array_shift($page['urls']));
+                        if($checked->isFound() &&
+                            $checked->isValid() &&
+                            !$checked->isRedirect()
+                        ){
+                            $ccn = 0;
+                            while($ccn < count($this->conditions) && $checked){
+                                //echo count($ccn);
+                                switch ($this->conditions[$ccn][1][0]){
+                                    case "=":
+                                        if($checked->getContent($this->conditions[$ccn][0][0],$this->conditions[$ccn][0][1])!==$this->conditions[$ccn][1][1]) $checked = false;
+                                        break;
+                                    case ">":
+                                        if($checked->getContent($this->conditions[$ccn][0][0],$this->conditions[$ccn][0][1])<$this->conditions[$ccn][1][1]) $checked = false;
+                                        break;
+                                    case "<":
+                                        if($checked->getContent($this->conditions[$ccn][0][0],$this->conditions[$ccn][0][1])>$this->conditions[$ccn][1][1]) $checked = false;
+                                        break;
+                                    case "~":
+                                        $content = $checked->getContent($this->conditions[$ccn][0][0],$this->conditions[$ccn][0][1]);
+                                        if(is_string($content)||is_numeric($content)){
+                                            similar_text($content,$this->conditions[$ccn][1][1],$similarity);
+                                            if($similarity<65) $checked = false;
+                                        }else{
+                                            // if type bool or unknown - compare!
+                                            if($content!==$this->conditions[$ccn][1][1]) $checked = false;
+                                        }
+                                        break;
+                                    case "~~": // TODO: rewrite to numbers && booleans
+                                        $content = $checked->getContent($this->conditions[$ccn][0][0],$this->conditions[$ccn][0][1]);
+                                        if(is_string($content)||is_numeric($content)){
+                                            if(strpos((string)$content,(string)$this->conditions[$ccn][1][1])===false) $checked = false;
+                                        }else{
+                                            // if type bool or unknown - compare!
+                                            if($content!==$this->conditions[$ccn][1][1]) $checked = false;
+                                        }
+                                        break;
+                                }
+                                $ccn++;
+                            }
+                        }else{
+                            $checked = false;
+                        }
+                        if($checked)
+                            $checkedAmount++;
+                    }
                 }
                 if (
                     $checked &&
@@ -1147,21 +1246,21 @@ class Search
                         $checkedAmount > $this->from
                     )
                 ) {
-                    $url = "/" . array_shift($page['urls']);
-                    $console->trace("#" . $page['id'] . " added as " . $url);
-                    array_push($list, $url);
+                    $console->trace("#" . $page['id'] . " added");
+                    array_push($list, $checked);
                 }
                 if (!is_null($this->to) && // null means infinity
                     $this->to > $this->from &&
-                    $checkedAmount + 1 == $this->to
-                ) return $list;
+                    $checkedAmount == $this->to
+                ){
+                    $this->conditions = array();
+                    return $list;
+                }
             }
         }
+        $this->conditions = array();
         return $list;
     }
-
-
-
     private function checkType($page)
     {
         return
@@ -1268,10 +1367,18 @@ function getExecutionTime()
     return time() - $execution_start;
 }
 
-function getSiteURI()
+function getSiteURI($d=true)
 {
     global $configuration;
-    return "http" . ($configuration['site']['https_supported'] ? "s" : "") . "://" . $configuration['site']['host'] . "/";
+    return "http" . ($configuration['site']['https_supported'] ? "s" : "") . "://" . $configuration['site']['host'] . $d ? "/" : "";
+}
+
+function insureURL($u){
+    $p = parse_url($u);
+    if($p && !isset($p["host"])){
+        $p = getSiteURI(false).$p["path"].(isset($p["query"]) && !is_null($p["query"]) ? "?".$p["query"] : "").(isset($p["fragment"]) && !is_null($p["fragment"]) ? "#".$p["fragment"] : "");
+    }
+    return $p;
 }
 
 if ($request_url == "/luna/api") {

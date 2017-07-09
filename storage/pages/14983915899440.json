@@ -15,7 +15,8 @@
     "common_name":"Some goodie",
     "common_price":25,
     "common_code":1234567890,
-    "common_description":"<i>This is demo description!</i>"
+    "common_description":"<i>This is demo description!</i>",
+    "common_state":true
   },
   "optimization":{
     "description":"This is a demo page about the most simple ad powerful CMS in the world. It is opensource, try it for free right now!",
