@@ -3,19 +3,18 @@ session_start();
 header('Content-Type: application/json');
 
 class DataModel{
-    private $datamodelArray = null;
-    private $datamodel = null;
+    private $datamodelArray = array();
+    private $datamodel = array();
     function __construct(){
         global $console;
         global $paths;
         $console->trace("Loading DataModel...");
         try{
             $this->datamodelArray = json_decode(file_get_contents($paths["workspace"]."datamodel.json"),true);
-            $console->trace("Pacing DataModel...");
+            $console->trace("Parsing DataModel...");
             $this->datamodel = array();
             foreach ($this->datamodelArray as $pageType){
                 if(
-                    !is_null($pageType) &&
                     is_array($pageType)
                 ){
                     array_push($this->datamodel, new PageType($pageType));
@@ -23,101 +22,97 @@ class DataModel{
             }
         }catch (Error $error){
             $console->error("DataModel is corrupted or not accessible");
-            $this->datamodel = null;
+            $this->datamodel = array();
         }
     }
     public function getArray(){
         return $this->datamodelArray;
     }
+    public function getPageTypes(){
+        return $this->datamodel;
+    }
 }
 class PageType{
     private $pageType = null;
     function __construct($pageType){
+        global $console;
+        $console->trace("Constructing PageType...");
         $this->pageType = $pageType;
         if(
-            !is_null($this->pageType) &&
-            is_array($this->pageType) &&
-            isset($this->pageType->sections) &&
-            !is_null($this->pageType->sections) &&
-            is_array($this->pageType->sections)
+            is_array($pageType) &&
+            isset($pageType["sections"]) &&
+            is_array($pageType["sections"])
         ){
+            $console->trace("PageType have sections");
             $newSections = array();
-            foreach ($this->pageType->sections as $section) {
+            foreach ($this->pageType["sections"] as $section) {
                 array_push($newSections,new SectionObject($section));
+                $console->trace("Constructed PageType section");
             }
-            $this->pageType->sections = $newSections;
+            $this->pageType["sections"] = $newSections;
+            $console->trace("All PageType sections are updated");
+        }else{
+            $console->warn("PageType do not have sections.");
         }
     }
     public function getID(){
         if(
-            !is_null($this->pageType) &&
             is_array($this->pageType) &&
-            isset($this->pageType->id) &&
-            !is_null($this->pageType->id) &&
-            is_string($this->pageType->id)
+            isset($this->pageType["id"]) &&
+            is_string($this->pageType["id"])
         ){
-            return $this->pageType->id;
+            return $this->pageType["id"];
         }
         return null;
     }
     public function getName(){
         if(
-            !is_null($this->pageType) &&
             is_array($this->pageType) &&
-            isset($this->pageType->name) &&
-            !is_null($this->pageType->name) &&
-            is_string($this->pageType->name)
+            isset($this->pageType["name"]) &&
+            is_string($this->pageType["name"])
         ){
-            return $this->pageType->name;
+            return $this->pageType["name"];
         }
         return null;
     }
     public function getIcon(){
         if(
-            !is_null($this->pageType) &&
             is_array($this->pageType) &&
-            isset($this->pageType->icon) &&
-            !is_null($this->pageType->icon) &&
-            is_string($this->pageType->icon)
+            isset($this->pageType["icon"]) &&
+            is_string($this->pageType["icon"])
         ){
-            return $this->pageType->icon;
+            return $this->pageType["icon"];
         }
         return null;
     }
     public function getAmount(){
         if(
-            !is_null($this->pageType) &&
             is_array($this->pageType) &&
-            isset($this->pageType->amount) &&
-            !is_null($this->pageType->amount) &&
-            is_integer($this->pageType->amount) // TODO: add to wiki
+            isset($this->pageType["amount"]) &&
+            is_integer($this->pageType["amount"]) // TODO: add to wiki
         ){
-            return $this->pageType->amount;
+            return $this->pageType["amount"];
         }
         return null;
     }
     public function getSections(){
         if(
-            !is_null($this->pageType) &&
             is_array($this->pageType) &&
-            isset($this->pageType->sections) &&
-            !is_null($this->pageType->sections) &&
-            is_array($this->pageType->sections)
+            isset($this->pageType["sections"]) &&
+            is_array($this->pageType["sections"])
         ){
-            return $this->pageType->sections;
+            return $this->pageType["sections"];
         }
         return null;
     }
     public function getSectionsIDs(){
         $sections = $this->getSections();
         if(
-            !is_null($sections) &&
             is_array($sections)
         ){
             $sectionsIDs = array();
             foreach ($sections as $section){
                 if(
-                    !is_null($section) &&
                     !is_null($section->getID())
                 ){
                     array_push($sectionsIDs,$section->getID());
@@ -130,7 +125,6 @@ class PageType{
     public function getSection($sectionID){
         $sections = $this->getSections();
         if(
-            !is_null($sections) &&
             is_array($sections)
         ){
             foreach ($sections as $section){
@@ -508,7 +502,7 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
             terminate(400,"HTTP/1.0 400 Bad Request","{\"error\":\"Login or password fields are missing\"}");
         }else{
             $user = @json_decode(@file_get_contents($paths["users"].md5($_POST["login"]).".json"),true);
-            if(!is_null($user)&&isset($user["password"])&&$user["password"]==md5($_POST["password"])){
+            if(!is_null($user)&&isset($user["password"])&&$user["password"]==$_POST["password"]){
                 $_SESSION["login"] = basename($_POST["login"]);
                 $console->info("User logged in as ".$_SESSION["login"]);
                 terminate(200,"HTTP/1.0 200 OK","{\"error\":false}");
@@ -526,6 +520,7 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
         session_destroy();
         terminate(500,"HTTP/1.0 500 Internal Server Error","{\"error\":\"User profile file is corrupted or in use\"}");
     }
+    $dataModel = new DataModel();
     switch ($_POST["action"]){
         case "logout":
             $console->trace("@".$_SESSION["login"]." logged out");
@@ -546,7 +541,23 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
 
 
 
+        case "getDatamodelPageTypes":
+            $pt = array();
+            foreach ($dataModel->getPageTypes() as $t){
+                array_push($pt,array("id"=>$t->getID(),"name"=>$t->getName(),"icon"=>$t->getIcon(),"sectionsIDs"=>$t->getSectionsIDs(),"amount"=>$t->getAmount()));
+            }
+            terminate(200,"HTTP/1.0 200 OK",json_encode(array(
+                "error"=>false,
+                "data"=>$pt
+            )));
+            break;
         case "getPages":
+            if(!isset($_POST['filter'])){
+                terminate(400,"HTTP/1.0 400 Bad Request",json_encode(array(
+                    "error"=>true,
+                    "moment"=>1
+                )));
+            }
             // TODO: add filter by page type
             // TODO: add filter by search
             // TODO: add pages list size managing
@@ -554,7 +565,8 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
         case "getPage":
             if(!isset($_POST['id'])&&isset($_POST['uri'])){
                 terminate(400,"HTTP/1.0 400 Bad Request",json_encode(array(
-                    "error"=>true
+                    "error"=>true,
+                    "moment"=>2
                 )));
             }
             if(isset($_POST['uri'])){
@@ -564,7 +576,8 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
             }
             if(!$page->isValid()){
                 terminate(222,"HTTP/1.0 422 Unprocessable Entity",json_encode(array(
-                    "error"=>true
+                    "error"=>true,
+                    "moment"=>3
                 )));
             }
             terminate(200,"HTTP/1.0 200 OK",json_encode(array(
@@ -577,7 +590,6 @@ if(!isset($_SESSION["login"])||!file_exists($paths["users"].md5($_SESSION["login
 
 
         case "getDataModel":
-            $dataModel = new DataModel();
             terminate(200,"HTTP/1.0 200 OK",json_encode(array(
                 "error"=>false,
                 "data"=>$dataModel->getArray()

@@ -2,7 +2,7 @@
   {
     "id":"good",
     "name":"Товар",
-    "icon":"awecome-icon",
+    "icon":"loyalty",
     "sections":[
       {
         "id":"common",
@@ -54,6 +54,7 @@
   {
     "id": "home",
     "name": "Главная страница",
+    "icon":"home",
     "objects": [
       {
         "amount": 1,
